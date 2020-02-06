@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FemaleRace</title>
+    <!-- Fonts Begin-->
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+    <!-- Fonts End -->
+    <!-- CSS Begin -->
+    <link rel="stylesheet" href="./asset/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./asset/css/animate.css">
+    <link rel="stylesheet" href="./asset/css/style.css">    
+    <!-- CSS End -->
+</head>
+
+<body>
+    <!-- Menu Button Begin -->
+    <div class="menu-btn">
+        <a href="#"><i class="fas fa-bars"></i></a>
+    </div>
+    <!-- Menu Button End -->
+
+    <!-- Page Container Begin -->
+    <div class="wrapper" id="Home">
+        <!-- Page Overlay Layer Begin -->
+        <div class="over"></div>
+        <!-- Page Overlay Layer End -->
+
+        <!-- Typescript Begin -->
+        <span id="typed"></span>
+        <!-- Typescript End -->
+        
+        <!-- Menu Begin -->
+        <div class="menu">
+            <div class="row">
+                <div class="col-lg overlay">
+                    <!-- Menu List Begin -->
+                    <ul>
+                        <li><a class="active" href="./index.html">Home</a></li>
+                        <li><a href="./pages/about.html">About</a></li>
+                        <li><a href="./pages/services.html">Services</a></li>
+                        <li><a href="./pages/clients.html">Clients</a></li>
+                        <li><a href="./pages/blogs.html">Blogs</a></li>
+                        <li><a href="./pages/contact.html">Contact</a></li>
+                    </ul>
+                    <!-- Menu List End -->
+                    <h1>Let's create useful website for you ?</h1>
+                    <!-- Copyrights Begin -->
+                    <h3>Eastside © 2019</h3>
+                    <!-- Copyrights End -->
+                </div>
+            </div>
+        </div>
+        <!-- Menu End -->
+    </div>
+    <!-- Page Container End -->
+    <!-- Javascript Begin -->
+    <script src="./asset/js/jquery.min.js"></script>
+    <script src="./asset/js/popper.min.js"></script>
+    <script src="./asset/js/bootstrap.min.js"></script>
+    <script src="./asset/js/bootstrap.bundle.min.js"></script>
+    <script src="./asset/js/TweenMax.min.js"></script>
+    <script src="./asset/js/typed.js"></script>
+    <script src="./asset/js/script.js"></script>
+    <script>
+        $(window).resize(function () {
+            var viewportWidth = $(window).width();
+            if (viewportWidth < 992) {
+                $("#Home").addClass("over-hide");
+            }
+            else{
+                $("#Home").removeClass("over-hide");
+            }
+        });
+        if ($(window).width() > 992) {
+            var lFollowX = 0,
+                lFollowY = 0,
+                x = 0,
+                y = 0,
+                friction = 1 / 80;
+
+            function moveBackground() {
+                x = (lFollowX - x) * friction;
+                y = (lFollowY - y) * friction;
+                //   console.log(x);
+                //   console.log(y);
+                var translate = 'translate(' + x + 'px, ' + y + 'px) scale(1.1)';
+
+                $('#Home').css({
+                    'transform': translate
+                });
+
+                window.requestAnimationFrame(moveBackground);
+            }
+
+            $(window).on('mousemove click', function (e) {
+                //    console.log("width of window : " + $(window).width());
+                //    console.log("height of window : " + $(window).height()); 
+                //    console.log("X Point : " + e.clientX);
+                //    console.log("Y Point : " + e.clientY);
+                var lMouseX = $(window).width() - e.clientX;
+                var lMouseY = $(window).height() - e.clientY;
+                //   console.log(lMouseX);
+                //   console.log(lMouseY);
+                lFollowX = (50 * lMouseX) / 50; // 100 : 12 = lMouxeX : lFollow
+                lFollowY = (30 * lMouseY) / 50;
+
+            });
+
+            moveBackground();
+        }
+    </script>
+    <!-- Javascript End -->
+</body>
+
+</html>
